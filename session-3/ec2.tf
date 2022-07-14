@@ -2,6 +2,10 @@ resource "aws_instance" "first_ec2" {
     ami = "ami-0cff7528ff583bf9a"
     instance_type = "t2.micro"
     vpc_security_group_ids = [ aws_security_group.main.id ]
+    key_name = var.key_name
+    tags = {
+        Name = var.env
+    }
 }
 
 # Ctl / to comment/uncomment everything
