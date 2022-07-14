@@ -8,3 +8,7 @@ resource "aws_instance" "main" {
     Name2 = format("%s-instance", var.env)      # dev-instance, qa-instance 
   }
 }
+
+# make it functional
+# make it dynamic
+# make it beautiful
