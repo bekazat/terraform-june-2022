@@ -13,9 +13,8 @@ variable "env" {
   description = "this variable represents environment"
   default     = "dev"
 }
-
-variable = "ingress_ports" {
+variable  "ingress_ports" {
   type = list(string)
-  description = This is list of ports
+  description = "This is list of ports"
   default = [ "22", "80", "443" ]
 }
