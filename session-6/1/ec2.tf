@@ -9,6 +9,10 @@ resource "aws_instance" "main" {
     Name2 = format("%s-instance", var.env)      # dev-instance, qa-instance 
   }
 }
+resource "aws_security_group" "main" {
+    name = "${var.env}-instance-sg"
+    description = "This is a SG for my EC2"
+}
 
 # make it functional
 # make it dynamic
