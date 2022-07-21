@@ -1,5 +1,5 @@
 resource "aws_security_group" "main" {
-  name        = "Class-3-SG"
+  name        = "Task-SG"
   description = "Allow main inbound traffic"
 }
 
