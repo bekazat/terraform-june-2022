@@ -5,5 +5,9 @@ module "s3" {
 
 }
 module "ec2" {
-    source = ""
+    source = "github.com/bekazat/terraform-june-2022//modules/ec2"
+    ami = "ami-0cff7528ff583bf9a"
+    instance_type = "t2.micro"
+    env = "dev"
+    s2_bucket_name = module.s3.id
 }
