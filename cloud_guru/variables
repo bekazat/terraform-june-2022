@@ -1,0 +1,5 @@
+variable "my_var" {
+	description = "this is my 1st variable"
+	type = string
+	default = "Hello"
+}
