@@ -69,3 +69,40 @@ resource "aws_subnet" "udemy-priv-3" {
         Name = "udemy-priv-3"
     }
 }
+
+resource "aws_internet_gateway" "udemy-IGW" {
+    vpc_id = aws_vpc.udemy.id
+    tags = {
+        Name = "udemy-IGW"
+    }
+}
+
+resource "aws_route_table" "udemy-pub-RT" {
+    vpc_id = aws_vpc.udemy.id
+
+    route {
+        cidr_block = "0.0.0.0/0"
+        gateway_id = aws_internet_gateway.udemy-IGW.id
+    }
+    
+    tags = {
+        Name = "udemy-pub-RT"
+    }
+}
+
+resource "aws_route_table-association" "udemy-pub-1-a" {
+    subnet_id = aws_subnet.udemy-pub-1.id
+    route_table_id = aws_route_table.udemy-pub-RT.id
+}
+
+
+resource "aws_route_table_association" "udemy-pub-2-a" {
+    subnet_id = aws_subnet.udemy-pub-2.id
+    route_table_id = aws_route_table.udemy-pub-RT.id
+}
+
+resource "aws_route_table_association" "udemy-pub-3-a" {
+    subnet_id = aws_subnet.udemy-pub-3.id
+    route_table_id = aws_route_table.udemy-pub-RT.id
+
+}
