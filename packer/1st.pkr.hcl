@@ -1,0 +1,27 @@
+source "amazon-ebs" "ubuntu" {
+#   access_key    = "AKIA4A4CBXEVKEVD3ACC"
+#   secret_key    = "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"
+  ami_name      = "packer-ubuntu-aws-{{timestamp}}"
+  instance_type = "t2.micro"
+  region        = "us-east-1"
+  source_ami_filter {
+    filters = {
+      name                = "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*"
+      root-device-type    = "ebs"
+      virtualization-type = "hvm"
+    }
+    most_recent = true
+    owners      = ["099720109477"]
+  }
+  ssh_username = "ubuntu"
+  tags = {
+    Name = "DevUbuntuImage"
+    Env  = "dev"
+
+  }
+}
+build {
+  sources = [
+    "source.amazon-ebs.ubuntu"
+  ]
+}
