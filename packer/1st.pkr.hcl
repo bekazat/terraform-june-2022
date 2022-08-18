@@ -1,6 +1,4 @@
 source "amazon-ebs" "ubuntu" {
-#   access_key    = "AKIA4A4CBXEVKEVD3ACC"
-#   secret_key    = "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"
   ami_name      = "packer-ubuntu-aws-{{timestamp}}"
   instance_type = "t2.micro"
   region        = "us-east-1"
